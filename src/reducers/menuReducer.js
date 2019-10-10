@@ -5,7 +5,7 @@ import {
 } from '../actions/menuActions';
 
 const initialState = {
-  items: [],
+  menus: [],
   loading: false,
   error: null
 };
@@ -23,15 +23,15 @@ export default function menuReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        items: action.payload.items
+        menus: action.payload.item
       };
 
     case FETCH_MENU_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload.error,
-        items: []
+        error: (action.payload.error) ? action.payload.error : "Error generico por que el endpoint no devuelve nada en caso de error",
+        menus: []
       };
 
     default:

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { fetchSliders } from "../actions/sliderActions";
 import { Container, Row, Col } from 'reactstrap';
 
+
 class Home extends Component{
-	constructor(props){
-		super(props);
+	componentDidMount(){
+		this.props.dispatch(fetchSliders());
 	}
 
 	render(){
@@ -19,4 +22,11 @@ class Home extends Component{
 	}
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  sliders: state.sliderReducer.sliders,
+  title: state.sliderReducer.title,
+  loading: state.sliderReducer.loading,
+  error: state.sliderReducer.error
+});
+
+export default connect(mapStateToProps)(Home);

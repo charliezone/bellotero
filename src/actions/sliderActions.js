@@ -1,16 +1,22 @@
 import { APP_CONFIG } from '../config/config.js';
 
 export function fetchSliders() {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(fetchSliderBegin());
-    return fetch(`${APP_CONFIG.fetchUrl}app.json`)
-      .then(handleErrors)
-      .then(res => res.json())
-      .then(json => {
-        dispatch(fetchSliderSuccess(json.slider));
-        return json.slider;
-      })
-      .catch(error => dispatch(fetchSliderFailure(error)));
+    const state = getState();
+    /* como es una app que maneja datos estaticos utilice esta comprobación para que dentro de la seccion
+    si el usuario vuelve a la misma pagina no tenga que realizar otra petición para obtener los datos,
+    sino que lo obtiene directamente del store (no la hubiera utilizado si fuera una app con datos mas dinamicos) */ 
+    if (state.sliderReducer.title.length === 0 && state.sliderReducer.sliders.length === 0) {
+    	return fetch(`${APP_CONFIG.fetchUrl}page1.json`)
+	      .then(handleErrors)
+	      .then(res => res.json())
+	      .then(json => {
+	        dispatch(fetchSliderSuccess(json.slider));
+	        return json.slider;
+	      })
+	      .catch(error => dispatch(fetchSliderFailure(error)));
+    }   
   };
 }
 
@@ -29,12 +35,12 @@ export const fetchSliderBegin = () => ({
   type: FETCH_SLIDER_BEGIN
 });
 
-export const fetchSliderSuccess = items => ({
+export const fetchSliderSuccess = item => ({
   type: FETCH_SLIDER_SUCCESS,
-  payload: { items }
+  payload: { item }
 });
 
 export const fetchSliderFailure = error => ({
   type: FETCH_SLIDER_FAILURE,
-  payload: { error }
+  payload: error
 });

@@ -5,7 +5,7 @@ import {
 } from '../actions/sliderActions';
 
 const initialState = {
-  items: [],
+  sliders: [],
   title: "",
   loading: false,
   error: null
@@ -24,16 +24,16 @@ export default function sliderReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        items: action.payload.reviews,
-        title: action.payload.title
+        sliders: action.payload.item.reviews,
+        title: action.payload.item.title
       };
 
     case FETCH_SLIDER_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload.error,
-        items: []
+        error: (action.payload.error) ? action.payload.error : "Error generico por que el endpoint no devuelve nada en caso de error",
+        sliders: []
       };
 
     default:

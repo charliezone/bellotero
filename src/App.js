@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux";
+import { fetchMenus } from "./actions/menuActions";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Container,
@@ -31,6 +33,10 @@ class App extends Component{
     };
   }
 
+  componentDidMount(){
+    this.props.dispatch(fetchMenus());
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -38,6 +44,16 @@ class App extends Component{
   }
 
   render() {
+    const { error, loading, menus } = this.props;
+
+    if (error) {
+      return <div>Error! {error}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <Router>
         <div className="app-container">
@@ -50,12 +66,13 @@ class App extends Component{
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                       <Nav className="ml-auto" navbar>
-                        <NavItem>
-                          <Link to="/" className="nav-link">home</Link>
-                        </NavItem>
-                        <NavItem>
-                          <Link to="/solutions" className="nav-link">Solutions</Link>
-                        </NavItem>
+                      {menus.map(menu => {
+                        return (
+                          <NavItem>
+                            <Link to={`/${menu.route}`} className="nav-link">{menu.text}</Link>
+                          </NavItem>
+                        );
+                      })}
                       </Nav>
                     </Collapse>
                   </Navbar>
@@ -64,8 +81,10 @@ class App extends Component{
             </Container>
           </header>
           <main className="main">
+            {(loading) ? <div>Loading...</div> : ""}
             <Route path="/" exact component={Home} />
-            <Route path="/solutions" exact component={Solutions} />
+            <Route path="/page-1" exact component={Home} />
+            <Route path="/page-2" exact component={Solutions} />
           </main>
         </div>
       </Router>
@@ -73,4 +92,10 @@ class App extends Component{
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  menus: state.menuReducer.menus,
+  loading: state.menuReducer.loading,
+  error: state.menuReducer.error
+});
+
+export default connect(mapStateToProps)(App);
