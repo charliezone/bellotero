@@ -1,0 +1,18 @@
+@import '../styles/_colors.scss';
+
+.home{
+	h2{
+		background-color: $blue;
+		display: inline-block;
+		font-family: Roboto;
+	  	font-size: 36px;
+	  	font-weight: 900;
+	  	font-style: normal;
+	  	font-stretch: normal;
+	  	line-height: 1.11;
+	  	letter-spacing: 0.77px;
+		color: $blanco;
+		padding: 8px 1%;
+		margin-top: 120px;
+	}
+}

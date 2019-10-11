@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import { fetchMenus } from "./actions/menuActions";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 import {
   Container,
   Row,
@@ -12,7 +12,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -20,8 +19,15 @@ import {
 
 import Home from './home';
 import Solutions from './solutions';
-import logo from './logo.svg';
+import logo from './assets/img/bellotero.svg';
 import './App.scss';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Roboto:500', 'sans-serif']
+  }
+});
 
 class App extends Component{
   constructor(props){
@@ -56,34 +62,27 @@ class App extends Component{
 
     return (
       <Router>
-        <div className="app-container">
-          <header>
-            <Container>
-              <Row>
-                <Col>
-                  <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                      <Nav className="ml-auto" navbar>
-                      {menus.map(menu => {
-                        return (
-                          <NavItem>
-                            <Link to={`/${menu.route}`} className="nav-link">{menu.text}</Link>
-                          </NavItem>
-                        );
-                      })}
-                      </Nav>
-                    </Collapse>
-                  </Navbar>
-                </Col>
-              </Row>
-            </Container>
+        <div className="app-container App">
+          <header className="main-header">
+            <Navbar color="light" fixed="top" light expand="md">
+              <Link to="/" className="navbar-bra"><img src={logo} alt=""/></Link>
+              <NavbarToggler onClick={this.toggle} />
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                  {menus.map(menu => {
+                    return (
+                      <NavItem>
+                        <NavLink exact activeClassName={(menu.route !== "#") ? "navbar-link-active" : "navbar-link-inactive"} to={(menu.route !== "page-1") ? `/${menu.route}` : '/'} className="nav-link">{menu.text}</NavLink>
+                      </NavItem>
+                    );
+                  })}
+                </Nav>
+              </Collapse>
+            </Navbar>
           </header>
           <main className="main">
             {(loading) ? <div>Loading...</div> : ""}
             <Route path="/" exact component={Home} />
-            <Route path="/page-1" exact component={Home} />
             <Route path="/page-2" exact component={Solutions} />
           </main>
         </div>

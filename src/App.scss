@@ -2,7 +2,50 @@
 @import 'styles/_colors.scss';
 @import 'styles/_utils.scss';
 
-.App {
-  text-align: center;
+.App{
+	background-color: #f9faff;
+}
+
+main.main{
+	margin-top: 64px;
+}
+
+header.main-header{
+	nav.navbar{
+		height: 64px;
+		max-width: 1140px;
+		margin: 0 auto;
+	}
+
+	ul.navbar-nav{
+		.nav-item{
+			margin-right: 58px;
+
+			&:nth-last-of-type(1){
+				margin-right: 0;
+			}
+		}
+
+		.nav-link{
+			color: $blue;
+			font-family: 'Roboto', sans-serif;
+			font-size: 14px;
+		  	font-weight: 500;
+		  	font-style: normal;
+		  	font-stretch: normal;
+		  	line-height: normal;
+		  	letter-spacing: 0.3px;
+		  	height: 42px;
+    		margin-top: -22px;
+		    display: flex;
+		    align-items: flex-end;
+		    padding: 0;
+
+		  	&:hover, &.navbar-link-active{
+				color: $blue;
+				border-top: 2px solid $blue;
+			}
+		}
+	}
 }
 

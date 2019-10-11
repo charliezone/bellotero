@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { fetchSliders } from "../actions/sliderActions";
 import { Container, Row, Col } from 'reactstrap';
+import AppCarousel from '../appCarousel';
+import './home.scss'
 
 
 class Home extends Component{
@@ -11,10 +13,15 @@ class Home extends Component{
 
 	render(){
 		return(
-			<Container>
+			<Container className="home">
 				<Row>
 					<Col>
-						<h1>Home</h1>
+						<h2>{this.props.title}</h2>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<AppCarousel items={this.props.sliders} />
 					</Col>
 				</Row>
 			</Container>

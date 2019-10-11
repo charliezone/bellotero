@@ -11,7 +11,7 @@ class Solutions extends Component{
 			<Container>
 				<Row>
 					<Col>
-						<h1>Solutions</h1>
+						<input type="range" defaultValue={0} />
 					</Col>
 				</Row>
 			</Container>
