@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 import {
   Carousel,
   CarouselItem
@@ -56,7 +57,7 @@ class AppCarousel extends Component{
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={this.props.items.name}
+          key={uniqid()}
         >
         <div className="carouselItemContent">
           <div className="person">

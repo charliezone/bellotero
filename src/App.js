@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import uniqid from 'uniqid';
 import { connect } from "react-redux";
 import { fetchMenus } from "./actions/menuActions";
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
@@ -63,7 +64,7 @@ class App extends Component{
                 <Nav className="ml-auto" navbar>
                   {menus.map(menu => {
                     return (
-                      <NavItem>
+                      <NavItem key={uniqid()}>
                         <NavLink exact activeClassName={(menu.route !== "#") ? "navbar-link-active" : "navbar-link-inactive"} to={(menu.route !== "page-1") ? `/${menu.route}` : '/'} className="nav-link">{menu.text}</NavLink>
                       </NavItem>
                     );
