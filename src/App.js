@@ -3,19 +3,11 @@ import { connect } from "react-redux";
 import { fetchMenus } from "./actions/menuActions";
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 import {
-  Container,
-  Row,
-  Col,
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavItem} from 'reactstrap';
 
 import Home from './home';
 import Solutions from './solutions';

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchSliders } from "../actions/sliderActions";
 import { Container, Row, Col } from 'reactstrap';
 import AppCarousel from '../appCarousel';
-import './home.scss'
+import './home.scss';
 
 
 class Home extends Component{
