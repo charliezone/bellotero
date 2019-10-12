@@ -2,6 +2,26 @@
 @import 'styles/_colors.scss';
 @import 'styles/_utils.scss';
 
+.sweet-loading{
+	display: flex;
+	align-items: center;
+	height: 100vh;
+}
+
+.error-xhr{
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	font-family: Roboto;
+  	font-size: 72px;
+  	font-weight: 500;
+  	font-style: normal;
+  	font-stretch: normal;
+  	line-height: 1;
+  	letter-spacing: 1px;
+  	padding: 0 15%;
+}
+
 .App{
 	background-color: #f9faff;
 }

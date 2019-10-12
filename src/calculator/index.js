@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { calculatorCalculate } from "../actions/calculatorActions";
 import InputRange from 'react-input-range';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 import WebFont from 'webfontloader';
@@ -14,10 +16,10 @@ class Calculator extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-	      ingredientsValue: 10,
-	      employeesValue: 1,
-	      foodCostSaving: 10 * 0.3,
-	      annualSavings: 1337 + 3
+	      ingredientsValue: (this.props.ingredientsValue) ? this.props.ingredientsValue : 10,
+	      employeesValue: (this.props.employeesValue) ? this.props.employeesValue : 1,
+	      foodCostSaving: (this.props.ingredientsValue) ? this.props.ingredientsValue * 0.3 : 10 * 0.3,
+	      annualSavings: (this.props.employeesValue) ? (this.props.employeesValue * 1337) + (this.props.ingredientsValue * 0.3) : 1337 + 3
 	    };
 	}
 
@@ -30,6 +32,7 @@ class Calculator extends Component{
 			foodCostSaving: foodCostSaving,
 			annualSavings: annualSavings
 		});
+		this.props.calculate(this.state);
 	}
 
 	render(){
@@ -61,12 +64,12 @@ class Calculator extends Component{
 				<div className="results">
 					<InputGroup>
 			        	<InputGroupAddon addonType="prepend">$</InputGroupAddon>
-			        	<Input readOnly value={this.state.foodCostSaving} />
+			        	<Input readOnly value={Number(this.state.foodCostSaving).toFixed(2)} />
 			      	</InputGroup>
 					<label>Estimated cost food savings</label>
 					<InputGroup>
 			        	<InputGroupAddon addonType="prepend">$</InputGroupAddon>
-			        	<Input readOnly value={this.state.annualSavings} />
+			        	<Input readOnly value={Number(this.state.annualSavings).toFixed(2)} />
 			      	</InputGroup>
 					<label>Your estimated annual savings</label>
 				</div>
@@ -75,4 +78,17 @@ class Calculator extends Component{
 	}
 }
 
-export default Calculator;
+const mapStateToProps = state => ({
+  ingredientsValue: state.calculatorReducer.ingredientsValue,
+  employeesValue: state.calculatorReducer.employeesValue,
+  foodCostSaving: state.calculatorReducer.foodCostSaving,
+  annualSavings: state.calculatorReducer.annualSavings
+});
+
+function mapDispatchToProps(dispatch){
+	return {
+		calculate: item => dispatch(calculatorCalculate(item))
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator);

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { connect } from "react-redux";
+import { fetchCalculatorData } from "../actions/calculatorFetchActions";
 import Calculator from '../calculator';
 import 'react-input-range/lib/css/index.css';
 import WebFont from 'webfontloader';
@@ -11,15 +13,23 @@ WebFont.load({
   }
 });
 
+function truncate(str, no_words) {
+    return str.split(" ").splice(0,no_words).join(" ");
+}
+
 class Solutions extends Component{
+	componentDidMount(){
+		this.props.dispatch(fetchCalculatorData());
+	}
+
 	render(){
 		return(
 			<Container className="solutions">
 				<Row>
 					<Col xs="4">
-						<h2>Save more with</h2>
-						<h2>Bellotero.io</h2>
-						<p>With Bellotero.io you save time and money make real-time decisions that boost your business and your bottom line. Get less wrongfully blocked payments, save time on bookkeeping and no need to worry about safety.</p>
+						<h2>{truncate(this.props.title, 3)}</h2>
+						<h2>{this.props.title.substr(15)}</h2>
+						<p>{this.props.description}</p>
 					</Col>
 					<Col xs={{size: 6, offset: 2}}>
 						<Calculator></Calculator>
@@ -30,4 +40,11 @@ class Solutions extends Component{
 	}
 }
 
-export default Solutions;
+const mapStateToProps = state => ({
+  description: state.calculatorFetchReducer.description,
+  title: state.calculatorFetchReducer.title,
+  loading: state.calculatorFetchReducer.loading,
+  error: state.calculatorFetchReducer.error
+});
+
+export default connect(mapStateToProps)(Solutions);

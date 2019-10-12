@@ -10,6 +10,9 @@ import {
   Nav,
   NavItem} from 'reactstrap';
 
+import { css } from '@emotion/core';
+import FadeLoader from 'react-spinners/FadeLoader';  
+
 import Home from './home';
 import Solutions from './solutions';
 import logo from './assets/img/bellotero.svg';
@@ -45,12 +48,28 @@ class App extends Component{
   render() {
     const { error, loading, menus } = this.props;
 
+    const override = css`
+      display: block;
+      margin: 0 auto;
+      border-color: red;
+  `;
+
     if (error) {
-      return <div>Error! {error}</div>;
+      return <div className="error-xhr">Error! {error}</div>;
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return (
+        <div className='sweet-loading'>
+          <FadeLoader
+            css={override}
+            sizeUnit={"px"}
+            size={150}
+            color={'#123abc'}
+            loading={loading}
+          />
+        </div> 
+      );
     }
 
     return (
