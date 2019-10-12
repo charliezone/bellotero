@@ -1,4 +1,5 @@
 @import '../styles/_colors.scss';
+@import '../styles/_utils.scss';
 
 .calculator{
 	.feature{
@@ -6,6 +7,10 @@
 		grid-template-columns: 30% 30%;
 		grid-template-rows: 1fr 1fr;
 		justify-content: space-between;
+
+		@include media-max(998px){
+			grid-template-columns: 50% 50%;
+		}
 
 		label, .input-group{
 			grid-row: 1 / 2;
@@ -115,6 +120,11 @@
 		grid-template-columns: 50% 50%;
 		grid-template-rows: 1fr 1fr;
 		margin-top: 40px;
+
+		@include media-max(998px){
+			display: flex;
+			flex-direction: column;
+		}
 
 		.input-group{
 			grid-row: 1 / 2;

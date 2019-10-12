@@ -1,7 +1,13 @@
 @import '../styles/_colors.scss';
+@import '../styles/_utils.scss';
 
 .appCarousel{
 	margin-top: 40px;
+
+	@include media-max(998px){
+		margin-top: 0;
+	}
+
 	.carouselItemContent{
 		width: 90%;
 		height: 254px;
@@ -9,6 +15,12 @@
 		display: grid;
 		grid-template-columns: 20% 60%;
 		justify-content: space-between;
+
+		@include media-max(998px){
+			display: flex;
+			flex-direction: column;
+			height: auto;
+		}
 
 		h3, h4{
 			grid-column: 1 / 2;

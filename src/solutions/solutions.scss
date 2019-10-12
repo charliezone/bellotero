@@ -1,7 +1,12 @@
 @import '../styles/_colors.scss';
+@import '../styles/_utils.scss';
 
 .solutions{
 	margin-top: 184px;
+
+	@include media-max(998px){
+		margin-top: 80px;
+	}
 
 	h2{
 		padding: 8px 1.5%;

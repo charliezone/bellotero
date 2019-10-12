@@ -26,12 +26,12 @@ class Solutions extends Component{
 		return(
 			<Container className="solutions">
 				<Row>
-					<Col xs="4">
+					<Col xs="12" md="4">
 						<h2>{truncate(this.props.title, 3)}</h2>
 						<h2>{this.props.title.substr(15)}</h2>
 						<p>{this.props.description}</p>
 					</Col>
-					<Col xs={{size: 6, offset: 2}}>
+					<Col xs="12" md={{size: 6, offset: 2}}>
 						<Calculator></Calculator>
 					</Col>
 				</Row>

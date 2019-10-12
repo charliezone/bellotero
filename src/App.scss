@@ -35,6 +35,22 @@ header.main-header{
 		height: 64px;
 		max-width: 1140px;
 		margin: 0 auto;
+
+		@include media-max(998px){
+			height: auto;
+		}
+	}
+
+	.navbar-bra{
+		@include media-max(998px){
+			width: 80%;
+		}
+
+		img{
+			@include media-max(998px){
+				width: 70%;
+			}
+		}
 	}
 
 	ul.navbar-nav{
@@ -61,9 +77,18 @@ header.main-header{
 		    align-items: flex-end;
 		    padding: 0;
 
+		    @include media-max(998px){
+		    	font-size: 24px;
+		    	margin-top: 15px;
+		    }
+
 		  	&:hover, &.navbar-link-active{
 				color: $blue;
 				border-top: 2px solid $blue;
+
+				@include media-max(998px){
+					border-top: none;
+				}
 			}
 		}
 	}

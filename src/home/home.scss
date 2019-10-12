@@ -1,4 +1,5 @@
 @import '../styles/_colors.scss';
+@import '../styles/_utils.scss';
 
 .home{
 	h2{
@@ -14,5 +15,10 @@
 		color: $blanco;
 		padding: 8px 1%;
 		margin-top: 120px;
+
+		@include media-max(998px){
+			margin-top: 30px;
+			padding: 8px 4%;
+		}
 	}
 }
