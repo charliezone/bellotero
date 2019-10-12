@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import uniqid from 'uniqid';
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { fetchMenus } from "./actions/menuActions";
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
@@ -108,5 +109,11 @@ const mapStateToProps = state => ({
   loading: state.menuReducer.loading,
   error: state.menuReducer.error
 });
+
+App.propTypes = {
+    menus: PropTypes.array,
+    loading: PropTypes.bool,
+    error: PropTypes.string
+}
 
 export default connect(mapStateToProps)(App);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uniqid from 'uniqid';
+import PropTypes from 'prop-types';
 import {
   Carousel,
   CarouselItem
@@ -82,6 +83,10 @@ class AppCarousel extends Component{
       </Carousel>
     );
   }
+}
+
+AppCarousel.propTypes = {
+    items: PropTypes.array
 }
 
 export default AppCarousel;

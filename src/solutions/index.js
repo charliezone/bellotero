@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { fetchCalculatorData } from "../actions/calculatorFetchActions";
 import Calculator from '../calculator';
 import 'react-input-range/lib/css/index.css';
@@ -46,5 +47,12 @@ const mapStateToProps = state => ({
   loading: state.calculatorFetchReducer.loading,
   error: state.calculatorFetchReducer.error
 });
+
+Solutions.propTypes = {
+    description: PropTypes.string,
+    title: PropTypes.string,
+    loading: PropTypes.bool,
+    error: PropTypes.string
+}
 
 export default connect(mapStateToProps)(Solutions);

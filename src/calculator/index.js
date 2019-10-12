@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { calculatorCalculate } from "../actions/calculatorActions";
 import InputRange from 'react-input-range';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
@@ -89,6 +90,14 @@ function mapDispatchToProps(dispatch){
 	return {
 		calculate: item => dispatch(calculatorCalculate(item))
 	};
+}
+
+Calculator.propTypes = {
+    ingredientsValue: PropTypes.number,
+    employeesValue: PropTypes.number,
+    foodCostSaving: PropTypes.number,
+    annualSavings: PropTypes.number,
+    calculate: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calculator);
