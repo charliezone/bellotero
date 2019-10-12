@@ -148,17 +148,18 @@
 
 			span.input-group-text{
 			    padding-left: 1%;
-				font-size: 36px;
+				font-size: 18px;
 			  	line-height: 1.11;
 			  	letter-spacing: 0.77px;
 			  	color: $blue;
 			}
 
 			input[type="text"].form-control{
-				font-size: 36px;
-			  	line-height: 1;
+				font-size: 42px;
+				padding: 0;
 			  	letter-spacing: 1px;
 			  	color: $blue;
+			  	height: auto;
 			}
 		}
 

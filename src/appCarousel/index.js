@@ -65,7 +65,7 @@ class AppCarousel extends Component{
             <h3>{item.name}</h3>
             <h4>{item.position}</h4>
           </div> 
-          <p>{item.comment}</p>
+          <p>{`"${item.comment}"`}</p>
         </div>
         </CarouselItem>
       );
