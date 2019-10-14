@@ -42,7 +42,11 @@ header.main-header{
 		height: 64px;
 		max-width: 1140px;
 		margin: 0 auto;
-		background-color: #fff;
+		
+
+		@include media-min(998px){
+			background-color: #fff!important;
+		}
 
 		@include media-max(998px){
 			height: auto;
