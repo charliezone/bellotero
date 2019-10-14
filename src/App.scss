@@ -8,6 +8,11 @@
 	height: 100vh;
 }
 
+body{
+	
+
+}
+
 .error-xhr{
 	display: flex;
 	align-items: center;
@@ -24,17 +29,20 @@
 
 .App{
 	background-color: #f9faff;
+	height: 100vh;
 }
 
 main.main{
-	margin-top: 64px;
+	background-color: #f9faff;
 }
 
 header.main-header{
+	background-color: #fff;
 	nav.navbar{
 		height: 64px;
 		max-width: 1140px;
 		margin: 0 auto;
+		background-color: #fff;
 
 		@include media-max(998px){
 			height: auto;

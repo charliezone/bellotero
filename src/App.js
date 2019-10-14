@@ -77,7 +77,7 @@ class App extends Component{
       <Router>
         <div className="app-container App">
           <header className="main-header">
-            <Navbar color="light" fixed="top" light expand="md">
+            <Navbar expand="md">
               <Link to="/" className="navbar-bra"><img src={logo} alt=""/></Link>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>

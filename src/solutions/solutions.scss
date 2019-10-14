@@ -2,7 +2,7 @@
 @import '../styles/_utils.scss';
 
 .solutions{
-	margin-top: 184px;
+	padding-top: 120px;
 
 	@include media-max(998px){
 		margin-top: 80px;
