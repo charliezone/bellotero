@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { calculatorCalculate } from "../actions/calculatorActions";
+import { calculatorCalculate } from "../../redux/actions/calculatorActions";
 import InputRange from 'react-input-range';
 import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 import WebFont from 'webfontloader';
-import './calculator.scss';
 
 WebFont.load({
   google: {

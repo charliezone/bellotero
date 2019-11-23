@@ -1,0 +1,113 @@
+@import-normalize;
+@import 'colors.scss';
+@import 'utils.scss';
+@import 'appCarousel.scss';
+@import 'calculator.scss';
+@import 'home.scss';
+@import 'solutions.scss';
+
+@keyframes App-logo-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+.sweet-loading{
+	animation: App-logo-spin infinite 20s linear;
+	display: flex;
+	align-items: center;
+	height: 100vh;
+}
+
+.error-xhr{
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	font-family: Roboto;
+  	font-size: 72px;
+  	font-weight: 500;
+  	font-style: normal;
+  	font-stretch: normal;
+  	line-height: 1;
+  	letter-spacing: 1px;
+  	padding: 0 15%;
+}
+
+.App{
+	background-color: #f9faff;
+	height: 100vh;
+}
+
+main.main{
+	background-color: #f9faff;
+}
+
+header.main-header{
+	background-color: #fff;
+	nav.navbar{
+		height: 64px;
+		max-width: 1140px;
+		margin: 0 auto;
+		
+
+		@include media-min(998px){
+			background-color: #fff!important;
+		}
+
+		@include media-max(998px){
+			height: auto;
+		}
+	}
+
+	.navbar-bra{
+		@include media-max(998px){
+			width: 80%;
+		}
+
+		img{
+			@include media-max(998px){
+				width: 70%;
+			}
+		}
+	}
+
+	ul.navbar-nav{
+		.nav-item{
+			margin-right: 58px;
+
+			&:nth-last-of-type(1){
+				margin-right: 0;
+			}
+		}
+
+		.nav-link{
+			color: $blue;
+			font-family: 'Roboto', sans-serif;
+			font-size: 14px;
+		  	font-weight: 500;
+		  	font-style: normal;
+		  	font-stretch: normal;
+		  	line-height: normal;
+		  	letter-spacing: 0.3px;
+		  	height: 42px;
+    		margin-top: -22px;
+		    display: flex;
+		    align-items: flex-end;
+		    padding: 0;
+
+		    @include media-max(998px){
+		    	font-size: 24px;
+		    	margin-top: 15px;
+		    }
+
+		  	&:hover, &.navbar-link-active{
+				color: $blue;
+				border-top: 2px solid $blue;
+
+				@include media-max(998px){
+					border-top: none;
+				}
+			}
+		}
+	}
+}
+

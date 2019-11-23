@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { fetchCalculatorData } from "../actions/calculatorFetchActions";
+import { fetchCalculatorData } from '../../redux/actions/calculatorFetchActions';
 import Calculator from '../calculator';
 import 'react-input-range/lib/css/index.css';
 import WebFont from 'webfontloader';
-import './solutions.scss';
 
 WebFont.load({
   google: {

@@ -6,8 +6,7 @@ import {
   CarouselItem
 } from 'reactstrap';
 import WebFont from 'webfontloader';
-import rightArrow from '../assets/img/arrow-right-white.svg';
-import './appCarousel.scss';
+import rightArrow from '../../assets/img/arrow-right-white.svg';
 WebFont.load({
   google: {
     families: ['Cormorant+Garamond:600i', 'sans-serif', 'Roboto:700']

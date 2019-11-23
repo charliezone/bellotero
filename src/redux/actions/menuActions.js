@@ -1,4 +1,4 @@
-import { APP_CONFIG } from '../config/config.js';
+import APP_CONFIG from '../../config/config';
 
 export function fetchMenus() {
   return (dispatch, getState) => {

@@ -1,16 +1,21 @@
 @import-normalize;
-@import 'styles/_colors.scss';
-@import 'styles/_utils.scss';
+@import 'colors.scss';
+@import 'utils.scss';
+@import 'appCarousel.scss';
+@import 'calculator.scss';
+@import 'home.scss';
+@import 'solutions.scss';
+
+@keyframes App-logo-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
 
 .sweet-loading{
+	animation: App-logo-spin infinite 20s linear;
 	display: flex;
 	align-items: center;
 	height: 100vh;
-}
-
-body{
-	
-
 }
 
 .error-xhr{
@@ -38,7 +43,9 @@ main.main{
 
 header.main-header{
 	background-color: #fff;
-	nav.navbar{
+}
+
+header.main-header nav.navbar{
 		height: 64px;
 		max-width: 1140px;
 		margin: 0 auto;
@@ -53,28 +60,27 @@ header.main-header{
 		}
 	}
 
-	.navbar-bra{
+header.main-header .navbar-bra{
 		@include media-max(998px){
 			width: 80%;
 		}
+	}
 
-		img{
+header.main-header .navbar-bra img{
 			@include media-max(998px){
 				width: 70%;
 			}
 		}
-	}
 
-	ul.navbar-nav{
-		.nav-item{
+header.main-header ul.navbar-nav .nav-item{
 			margin-right: 58px;
-
-			&:nth-last-of-type(1){
-				margin-right: 0;
-			}
 		}
 
-		.nav-link{
+header.main-header ul.navbar-nav .nav-item:nth-last-of-type(1){
+				margin-right: 0;
+			}
+
+header.main-header ul.navbar-nav .nav-link{
 			color: $blue;
 			font-family: 'Roboto', sans-serif;
 			font-size: 14px;
@@ -93,8 +99,9 @@ header.main-header{
 		    	font-size: 24px;
 		    	margin-top: 15px;
 		    }
+		}
 
-		  	&:hover, &.navbar-link-active{
+header.main-header ul.navbar-nav .nav-link:hover, header.main-header ul.navbar-nav .nav-link.navbar-link-active{
 				color: $blue;
 				border-top: 2px solid $blue;
 
@@ -102,7 +109,4 @@ header.main-header{
 					border-top: none;
 				}
 			}
-		}
-	}
-}
 
